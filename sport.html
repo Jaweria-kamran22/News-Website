@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sports</title>
+    <link rel="stylesheet" href="۔/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="style.css">
+    <link
+    rel="stylesheet"
+    media="screen and (max-width: 768px)"
+    href="./mobile.css"
+  />
+  <link
+    href="https://fonts.googleapis.com/css?family=Lato|Staatliches&display=swap"
+    rel="stylesheet"
+  />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+        
+      
+</head>
+<body>
+
+    <nav>
+        <div id="logo"><img src="./dnbc.png"width="20px" alt=""></div>
+    
+        <label for="drop" class="toggle"><i class="fas fa-bars"></i></label>
+        <input type="checkbox" id="drop" />
+        <ul class= "menu ">
+          <li><a href="./index.html">Home</a></li>
+          <li><a href="./about.html">About</a></li>
+          <li><a href="./cities.html">Cities</a></li>
+          
+       
+          <li><a href="./contact.html">Contact</a></li>
+        </ul>
+      </nav>
+           <div class="container">  
+         
+        <div class="row" id="result">
+       
+      
+       </div>
+    </div>
+    
+     <script >
+      $(function(){
+   $.ajax({
+       type: "GET",
+       url: "https://cors-anywhere.herokuapp.com/https://newsapi.org/v2/top-headlines?country=us&category=sports&apiKey=d1a9d15d054740d288c925a70fe3037e  ",
+       data: "data",
+       dataType: "JSON",
+     
+       success: function (response) {
+           let output='';
+            for(let i in response.articles){
+            output += ` <div class="col-md-4 col-sm-6">
+            <div class="card" >
+                <img src=${response.articles[i].urlToImage} class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">${response.articles[i].title}</h5>
+               
+                  <a href=${response.articles[i].url} class="btn">Read More</a>
+                </div>
+              </div>
+        </div>`;
+console.log(response)
+        
+        }
+           $('#result').html(output);
+       }
+   });
+});
+</script> 
+ <footer id="main-footer" class="py-2">
+  <div class="container footer-container">
+    <div>
+      <img src="dnbc.png" alt="logo" />
+      <p>
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+        Praesentium quod ratione veniam sit harum excepturi sed quos
+        dignissimos maxime consequatur.
+      </p>
+    </div>
+    <div>
+      <h3>Email Newsletter</h3>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+      <form>
+        <input type="email" placeholder="Email:" required />
+        <input type="submit" value="Subscribe" class="btn btn-danger" />
+      </form>
+    </div>
+    <div>
+      <h3>Site Links</h3>
+      <ul class="list">
+        <li><a href="#">Help and Support</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2>Join our Club</h2>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis,
+        provident.
+      </p>
+      <a href="#" class="btn btn-secondary">Join Now</a>
+    </div>
+    <div>
+      <p>CREATED BY JLA TEAM</p>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
